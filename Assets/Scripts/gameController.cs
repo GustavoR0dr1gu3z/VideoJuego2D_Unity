@@ -9,9 +9,14 @@ public class gameController : MonoBehaviour
     [Range(0f,0.20f)]
 
     //Creando metodos para velocidad
-    public float parallaxSpeed = 0.00002f;
+    public float parallaxSpeed = 0.7f;
     public RawImage background;
     public RawImage platform;
+
+    public enum GameState {Idle, Playing};
+    public GameState gameState = GameState.Idle;
+
+
 
 
     // Start is called before the first frame update
@@ -23,8 +28,25 @@ public class gameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float finalSpeed = parallaxSpeed = Time.deltaTime;
-        background.uvRect = new Rect(background.uvRect.x + finalSpeed, 0f, 1f, 1f);
-        platform.uvRect = new Rect(platform.uvRect.x + finalSpeed * 4, 0f, 1f, 1f);
+	//Empieza el juego
+
+	if( gameState == GameState.Idle && (Input.GetKeyDown("up") || Input.GetMouseButtonDown(0))) {
+		gameState = GameState.Playing;	
+	}
+	// JUEGO EN MARCHA
+	else if(gameState == GameState.Playing) {
+			Parallax();
+		}
+	
     }
+
+
+    void Parallax() {
+		float finalSpeed = parallaxSpeed * Time.deltaTime;
+		background.uvRect = new Rect(background.uvRect.x + finalSpeed, 0f, 1f, 1f);
+		platform.uvRect = new Rect(platform.uvRect.x + finalSpeed * 4, 0f, 1f, 1f);
+	}
+
+
+
 }
