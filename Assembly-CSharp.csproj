@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\gameController.cs" />
+     <Compile Include="Assets\Scripts\PlayerController.cs" />
      <None Include="Assets\Audio\License.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/home/gustavo/Documentos/CURSO_VideoJuego_Unity/Jumping Guy/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

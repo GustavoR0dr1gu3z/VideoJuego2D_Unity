@@ -18,7 +18,7 @@ public class gameController : MonoBehaviour
     public enum GameState {Idle, Playing};
     public GameState gameState = GameState.Idle;
 
-
+    public GameObject player;
 
 
     // Start is called before the first frame update
@@ -34,7 +34,10 @@ public class gameController : MonoBehaviour
 
 	if( gameState == GameState.Idle && (Input.GetKeyDown("up") || Input.GetMouseButtonDown(0))) {
 		gameState = GameState.Playing;	
-    uiIdle.SetActive(false);
+   		uiIdle.SetActive(false);
+   		player.SendMessage("UpdateState", "PlayerRun");
+
+
 	}
 	// JUEGO EN MARCHA
 	else if(gameState == GameState.Playing) {
