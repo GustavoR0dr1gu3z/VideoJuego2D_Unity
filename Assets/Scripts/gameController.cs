@@ -17,7 +17,6 @@ public class gameController : MonoBehaviour
 
     public enum GameState {Idle, Playing};
     public GameState gameState = GameState.Idle;
-
     public GameObject player;
 
 
